@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Mini WP</title>
+    <link href='https://upload.wikimedia.org/wikipedia/commons/9/93/Wordpress_Blue_logo.png' rel='shortcut icon'>
+</head>
+<body> 
+        <header>
+            <!-- navbar -->
+            <nav class="navbar">
+                <div class="d-flex flex-row">
+                    <div class="col-sm" style="color: rgb(204, 231, 243);">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/9/93/Wordpress_Blue_logo.png" alt="Logo" width="50" class="rounded-circle">
+                        Mini WP 
+                    </div>
+                </div>
+                <span class="spanUser" style="color: rgb(204, 231, 243);">Wellcome, user</span>
+                <div class="flex-row-reverse">
+                    <div class="waves-effect waves-light btn" style="color: #ffffff"> 📄Create</div>
+                    <i class="material-icons" style="color: #ffffff">notification_important</i>
+                    <div class="waves-effect waves-light btn" style="color: #ffffff"> Logout</div>
+                </div>
+            </nav>
+        </header>
+        <main>
+            <!-- SideBar & Content Page -->
+            <div class="d-flex">
+                <!-- SideBar -->
+                <div class="bg-light border-right row-sm-4"  id="sidebar">
+                    <div class="list-group list-group-flush" >
+                        <a style="color: rgb(86, 148, 177);" href="#" class="list-group-item list-group-item-action bg-light"><i class="tiny material-icons">dashboard</i> Dashboard</a>
+                        <a style="color: rgb(86, 148, 177);" href="#" class="list-group-item list-group-item-action bg-light"><i class="tiny material-icons">account_circle</i> Profile</a>
+                        <a style="color: rgb(86, 148, 177);" href="#" class="list-group-item list-group-item-action bg-light"><i class="tiny material-icons">error</i> Settings</a>
+                        <a style="color: rgb(86, 148, 177);" href="#" class="list-group-item list-group-item-action bg-light"><i class="tiny material-icons">list</i> List Article</a>
+                        <a style="color: rgb(86, 148, 177);" href="#" class="list-group-item list-group-item-action bg-light"><i class="tiny material-icons">delete_sweep</i> Deleted Post</a>
+                    </div>
+                </div>
+                <!-- Content Page -->
+                <div class="d-flex row-sm-8">
+                    <!-- Form Add Article -->
+                    <div class="col">
+                        <!-- Dashboard -->
+                        <div id="dashboard" class="col-sm">
+                            <medium> Dashboard</medium>
+                            <!-- Form Add -->
+                            <div id="formAdd" class="card text-center">
+                                    <div class="card-header">
+                                        <p>Form Add Articles</p>
+                                    </div>
+                                    <div class="card-body">
+                                        <h5 class="card-title text-left">title article</h5>
+                                        <img src="https://hacktiv8.com/img/fox.png__vzu2vhp2VRX%2Bewg7J0bPlaAa9e377ae39495073d0e66db163fc8d9b" alt="Image Post">
+                                        <div class="input-group mb-3">
+                                            <div class="row">
+                                                <div class="input-field col-sm">
+                                                    <label for="title">Title Post: </label>
+                                                    <input placeholder="title post" id="title" type="text" class="validate">
+                                                    <label for="subtitle">Sub-title: </label>
+                                                    <input placeholder="sub-title post" id="subtitle" type="text" class="validate">
+                                                </div>
+                                            </div>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">Post Description</span>
+                                                </div>
+                                            </div>
+                                            <textarea class="form-control" aria-label="With textarea"></textarea>
+                                        </div>
+                                        <div class="input-group mb-3" >
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text" id="inputGroupFile">Upload</span>
+                                                </div>
+                                                <div class="custom-file">
+                                                    <input type="file" class="custom-file-input" id="inputGroupFile01"
+                                                    aria-describedby="inputGroupFile">
+                                                    <label class="custom-file-label" for="inputGroup">Choose file</label>
+                                                </div>
+                                            </div>
+                                    </div>
+                                    <div class="card-footer">
+                                        <a href="#" class="btn btn-light">Preview</a>
+                                        <a href="#" class="btn btn-light">Publish</a>
+                                    </div>
+                                </div>
+                        </div>
+                        <hr>
+                        <!-- Preview Article -->
+                        <div id="formAddPreview" class="col-sm">
+                            <medium>Form Add Article</medium>
+                            <div class="col">
+                                <!-- Preview -->
+                                <div id="previewArticle" class="card text-center">
+                                    <div class="card-header">
+                                        <p>Preview an Articles</p>
+                                    </div>
+                                    <div class="card-body">
+                                        <h5 class="card-title">TITLE</h5>
+                                        <img src="https://hacktiv8.com/img/fox.png__vzu2vhp2VRX%2Bewg7J0bPlaAa9e377ae39495073d0e66db163fc8d9b" alt="Image Post" sizes="" srcset="">
+                                        <p class="card-text">Sub-title : With supporting text below as a natural lead-in to additional content.</p>
+                                        <p>Field: Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fuga, ratione libero. Corporis architecto voluptate nisi? Autem necessitatibus labore sapiente praesentium, quisquam minima eos nobis quis veritatis cum, doloremque, ut delectus!</p>
+                                    </div>
+                                    <div class="card-footer">
+                                        <a href="#" class="btn btn-light">Preview</a>
+                                        <a href="#" class="btn btn-light">Publish</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <!-- List Articles -->
+                        <div class="col-sm">
+                            <medium>List of Articles</medium>
+                            <div class="row">
+                                <div id="postArticle" class="card border-info col-sm-4" >
+                                    <div class="card-header bg-transparent border-info text-info" >Post Title</div>
+                                        <div class="card-body text-info">
+                                            <h5 class="card-title">Sub Title Post</h5>
+                                            <p class="card-text">post field: Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                        </div>
+                                    <div class="card-footer bg-transparent border-info">Date Created
+                                        <a href="#" class="delete"><i class="tiny material-icons">clear</i> </a>
+                                        <a href="#" class="delete"><i class="tiny material-icons">edit</i> </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <!-- Menu Setings -->
+                        <div id="menuSetings" class="col-sm">
+                            <medium>Menu Settings</medium>
+                        </div>
+                        <hr>
+                        <!-- Profile -->
+                        <div id="profile" class="col-sm">
+                            <medium>Profile</medium>
+                            <div class="card text-center">
+                                <div class="card-header">
+                                    <p>User's name</p>
+                                </div>
+                                <div class="card-user text-left img-right" style="margin: 20px;">
+                                    <h5 class="card-title text-center">Special title treatment</h5>
+                                    <img src="https://hacktiv8.com/img/fox.png__vzu2vhp2VRX%2Bewg7J0bPlaAa9e377ae39495073d0e66db163fc8d9b" alt="Image User's">
+                                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fuga, ratione libero. Corporis architecto voluptate nisi? Autem necessitatibus labore sapiente praesentium, quisquam minima eos nobis quis veritatis cum, doloremque, ut delectus!</p>
+                                </div>
+                                <div class="card-footer">Since 2019</div>
+                            </div>
+                        </div>
+                        <hr>
+                        <!-- Deleted Post -->
+                        <div id="deletedPost" class="col-sm">
+                            <medium>Deleted Post</medium>
+                            <div class="col-sm">
+                                <div class="row">
+                                    <div class="card border-danger col-sm-4" >
+                                        <div class="card-header bg-transparent border-danger text-danger">Post Title</div>
+                                            <div class="card-body text-danger">
+                                                <h5 class="card-title">Sub Title Post</h5>
+                                                <p class="card-text">post field: Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                            </div>
+                                        <div class="card-footer bg-transparent border-danger text-danger">Date Created
+                                            <a href="#" class="delete"><i class="tiny material-icons">delete</i></a>
+                                        </div>
+                                    </div>
+                                    <div class="card border-danger col-sm-4" >
+                                        <div class="card-header bg-transparent border-danger text-danger">Post Title</div>
+                                            <div class="card-body text-danger">
+                                                <h5 class="card-title">Sub Title Post</h5>
+                                                <p class="card-text">post field: Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                            </div>
+                                        <div class="card-footer bg-transparent border-danger text-danger">Date Created
+                                            <a href="#" class="delete"><i class="tiny material-icons">delete</i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <!-- Login -->
+                        <div id="formLogin" class="col-sm">
+                            <medium>Form Login</medium>
+                            <div class="card text-center">
+                                <div class="card-header">
+                                    <p>Form Login</p>
+                                </div>
+                                <div class="card-user text-left" style="margin: 20px;">
+                                    <form class="p-4">
+                                        <div class="form-group">
+                                            <img src="https://img.icons8.com/bubbles/50/000000/gmail.png">
+                                            <label for="email">Email address</label>
+                                            <input type="email" class="form-control" id="email" placeholder="email@example.com">
+                                        </div>
+                                        <div class="form-group">
+                                            <img src="https://img.icons8.com/bubbles/50/000000/lock-2.png">
+                                            <label for="password">Password</label>
+                                            <input type="password" class="form-control" id="password" placeholder="Password">
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">Sign in</button>
+                                        <button type="submit" class="btn btn-warning">Register</button>
+                                    </form>
+                                </div>
+                                <div class="card-footer">Since 2019</div>
+                            </div>
+                        </div>
+                        <hr>
+                        <!-- Register -->
+                        <div id="formRegister" class="formRegister col-sm">
+                            <medium>Form Register</medium>
+                            <div class="card text-center">
+                                <div class="card-header">
+                                    <p>Form Register</p>
+                                </div>
+                                <div class="card-user text-left" style="margin: 20px;">
+                                    <form class="p-4">
+                                        <div class="form-group">
+                                            <img src="https://img.icons8.com/bubbles/50/000000/groups.png">
+                                            <label for="email">Username: </label>
+                                            <input type="text" class="form-control" id="Username" placeholder="username . . ">
+                                        </div>
+                                        <div class="form-group">
+                                            <img src="https://img.icons8.com/bubbles/50/000000/gmail.png">
+                                            <label for="email">Email: </label>
+                                            <input type="email" class="form-control" id="email" placeholder="user@example.com">
+                                        </div>
+                                        <div class="form-group">
+                                            <img src="https://img.icons8.com/bubbles/50/000000/lock-2.png">
+                                            <label for="password">Password: </label>
+                                            <input type="password" class="form-control" id="password" placeholder="Password">
+                                        </div>
+                                        <button type="submit" class="btn btn-warning">Register</button>
+                                        <button type="submit" class="btn btn-primary">Sign in</button>
+                                    </form>
+                                </div>
+                                <div class="card-footer">Since 2019</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <footer>
+            <div class="card-footer">&copy; mini wp by indinabilah</div>
+        </footer>
+    
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="./js/main.js"></script>
+    </body>
+</html>
