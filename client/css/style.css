@@ -35,6 +35,9 @@ a {
     text-decoration-color: none;
     -webkit-text-fill-color: rgb(86, 148, 177);
 }
+button {
+    -webkit-text-fill-color: rgb(86, 148, 177);
+}
 nav ul{
     justify-content: row;
     text-decoration: none;
@@ -49,6 +52,7 @@ main{
     bottom: 90px;
 }
 #sidebar {
+    position: fixed;
     min-height: 100vh;
     margin-left: -15rem;
     -webkit-transition: margin .25s ease-out;

@@ -1,4 +1,12 @@
 $(document).ready(function() {
-    $('#dashboard').hide()
-
+    $('#dashboard').show()
+    $('#searchTitle').show()
+    $('#listArticle').show()
+    $('#postArticle').show()
+    $('#profile').hide()
+    $('#formAdd').show()
+    $('#menuSetings').hide()
+    $('#deletedPost').hide()
+    $('#formLogin').hide()
+    $('#formRegister').hide()
 })

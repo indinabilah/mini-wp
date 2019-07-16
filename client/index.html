@@ -6,12 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./css/style.css">
     <title>Mini WP</title>
+    <!-- Link CSS, GAPI -->
     <link href='https://upload.wikimedia.org/wikipedia/commons/9/93/Wordpress_Blue_logo.png' rel='shortcut icon'>
 </head>
 <body> 
+    <div id="app">
         <header>
             <!-- navbar -->
             <nav class="navbar">
@@ -33,7 +34,7 @@
             <!-- SideBar & Content Page -->
             <div class="d-flex">
                 <!-- SideBar -->
-                <div class="bg-light border-right row-sm-4"  id="sidebar">
+                <div class="bg-light border-right"  id="sidebar">
                     <div class="list-group list-group-flush" >
                         <a style="color: rgb(86, 148, 177);" href="#" class="list-group-item list-group-item-action bg-light"><i class="tiny material-icons">dashboard</i> Dashboard</a>
                         <a style="color: rgb(86, 148, 177);" href="#" class="list-group-item list-group-item-action bg-light"><i class="tiny material-icons">account_circle</i> Profile</a>
@@ -42,28 +43,83 @@
                         <a style="color: rgb(86, 148, 177);" href="#" class="list-group-item list-group-item-action bg-light"><i class="tiny material-icons">delete_sweep</i> Deleted Post</a>
                     </div>
                 </div>
-                <!-- Content Page -->
-                <div class="d-flex row-sm-8">
-                    <!-- Form Add Article -->
+                <!-- Content Pages -->
+                <div class="d-flex row-sm-6 offset-3">
+                    <!-- Content Page -->
                     <div class="col">
                         <!-- Dashboard -->
                         <div id="dashboard" class="col-sm">
-                            <medium> Dashboard</medium>
-                            <!-- Form Add -->
-                            <div id="formAdd" class="card text-center">
-                                    <div class="card-header">
-                                        <p>Form Add Articles</p>
+                            <h2> Dashboard</h2>
+                            <hr>
+                            <!-- Search by Title -->
+                            <p> Title here </p>
+                            <!-- <button v-on:click="getAllArticle()" type="submit">get All</button> -->
+                            <input v-model="search" type="text" class="form-control" placeholder="search wp by title . . ">           
+                            <hr>
+                            <p>{{answer2}}</p>
+                            <!-- List Articles -->
+                            <div class="col-sm" id="listArticle">
+                                <h2>List of Articles</h2>
+                                <div class="row">
+                                    <div id="postArticle" class="card border-info col-sm-4" v-for="article in articles" >
+                                        <div class="card-header bg-transparent border-info text-info" >{{article.title}}</div>
+                                            <div class="card-body text-info">
+                                                <h5 class="card-title">{{article.title}}</h5>
+                                                <p class="card-text">{{article.subtitle}}</p>
+                                                <p class="card-text">{{article.description}}</p>
+                                            </div>
+                                        <div class="card-footer bg-transparent border-info">{{Date(article.createdAt)}}
+                                            <a v-on:click="deleteArticle(article._id)" href="#" class="delete"><i class="tiny material-icons">clear</i> </a>
+                                            <a v-on:click="updateForm(article._id)" href="#" class="edit"><i class="tiny material-icons">edit</i> </a>
+                                        </div>
                                     </div>
+                                </div>
+                                <hr>
+                            </div>
+                            <hr>
+                            <!-- Preview Article -->
+                            <div id="formAddPreview" class="col-sm">
+                                <h2>Form Preview Article</h2>
+                                <div class="col">
+                                    <!-- Preview -->
+                                    <div id="previewArticle" class="card text-center">
+                                        <div class="card-header">
+                                            <p>{{formAdd.title}}</p>
+                                        </div>
+                                        <div class="card-body">
+                                            <p><b>Title Post :</b></p>
+                                            <h5 class="card-title">{{formAdd.title}}</h5>
+                                            <p><b>Image :</b></p>
+                                            <p>{{formAdd.image}}</p>
+                                            <img src="" alt="Image Post" sizes="" srcset="">
+                                            <p><b>Subtitle :</b></p>
+                                            <p class="card-text">{{formAdd.subtitle}}</p>
+                                            <p><b>Description :</b></p>
+                                            <p style="white-space: pre-line;">{{formAdd.description}}</p>
+                                        </div>
+                                        <div class="card-footer">
+                                            <p>Preview Article</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            <!-- Form Add -->
+                            <p>Form Add Article</p>
+                            <div id="formAdd" class="card text-center">
+                                <div class="card-header">
+                                    <p>Form Add Articles</p>
+                                </div>
+                                <form method="post" v-on:submit.prevent="addArticle">
                                     <div class="card-body">
-                                        <h5 class="card-title text-left">title article</h5>
-                                        <img src="https://hacktiv8.com/img/fox.png__vzu2vhp2VRX%2Bewg7J0bPlaAa9e377ae39495073d0e66db163fc8d9b" alt="Image Post">
+                                        <img src="" alt="Image Post">
                                         <div class="input-group mb-3">
                                             <div class="row">
                                                 <div class="input-field col-sm">
                                                     <label for="title">Title Post: </label>
-                                                    <input placeholder="title post" id="title" type="text" class="validate">
+                                                    <input v-model="formAdd.title" placeholder="title post" type="text" class="validate">
                                                     <label for="subtitle">Sub-title: </label>
-                                                    <input placeholder="sub-title post" id="subtitle" type="text" class="validate">
+                                                    <input v-model="formAdd.subtitle" placeholder="sub-title post" type="text" class="validate">
                                                 </div>
                                             </div>
                                             <div class="input-group">
@@ -71,75 +127,77 @@
                                                     <span class="input-group-text">Post Description</span>
                                                 </div>
                                             </div>
-                                            <textarea class="form-control" aria-label="With textarea"></textarea>
+                                            <textarea v-model="formAdd.description" class="form-control" aria-label="With textarea"></textarea>
                                         </div>
                                         <div class="input-group mb-3" >
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text" id="inputGroupFile">Upload</span>
                                                 </div>
+                                                <input v-model="formAdd.image" type="text" placeholder="url address sementara . ." >
                                                 <div class="custom-file">
                                                     <input type="file" class="custom-file-input" id="inputGroupFile01"
                                                     aria-describedby="inputGroupFile">
                                                     <label class="custom-file-label" for="inputGroup">Choose file</label>
                                                 </div>
                                             </div>
-                                    </div>
-                                    <div class="card-footer">
-                                        <a href="#" class="btn btn-light">Preview</a>
-                                        <a href="#" class="btn btn-light">Publish</a>
-                                    </div>
-                                </div>
-                        </div>
-                        <hr>
-                        <!-- Preview Article -->
-                        <div id="formAddPreview" class="col-sm">
-                            <medium>Form Add Article</medium>
-                            <div class="col">
-                                <!-- Preview -->
-                                <div id="previewArticle" class="card text-center">
-                                    <div class="card-header">
-                                        <p>Preview an Articles</p>
-                                    </div>
-                                    <div class="card-body">
-                                        <h5 class="card-title">TITLE</h5>
-                                        <img src="https://hacktiv8.com/img/fox.png__vzu2vhp2VRX%2Bewg7J0bPlaAa9e377ae39495073d0e66db163fc8d9b" alt="Image Post" sizes="" srcset="">
-                                        <p class="card-text">Sub-title : With supporting text below as a natural lead-in to additional content.</p>
-                                        <p>Field: Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fuga, ratione libero. Corporis architecto voluptate nisi? Autem necessitatibus labore sapiente praesentium, quisquam minima eos nobis quis veritatis cum, doloremque, ut delectus!</p>
-                                    </div>
-                                    <div class="card-footer">
-                                        <a href="#" class="btn btn-light">Preview</a>
-                                        <a href="#" class="btn btn-light">Publish</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <hr>
-                        <!-- List Articles -->
-                        <div class="col-sm">
-                            <medium>List of Articles</medium>
-                            <div class="row">
-                                <div id="postArticle" class="card border-info col-sm-4" >
-                                    <div class="card-header bg-transparent border-info text-info" >Post Title</div>
-                                        <div class="card-body text-info">
-                                            <h5 class="card-title">Sub Title Post</h5>
-                                            <p class="card-text">post field: Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                        <div class="card-footer">
+                                            <button type="submit" class="btn btn-light">Publish</button>
                                         </div>
-                                    <div class="card-footer bg-transparent border-info">Date Created
-                                        <a href="#" class="delete"><i class="tiny material-icons">clear</i> </a>
-                                        <a href="#" class="delete"><i class="tiny material-icons">edit</i> </a>
                                     </div>
-                                </div>
+                                </form>
                             </div>
+                            <hr>
+                            <!-- Form Edit -->
+                            <p>Form Edit Article</p>
+                            <div id="formEdit" class="card text-center">
+                                <div class="card-header">
+                                    <p>Form Edit Articles</p>
+                                </div>
+                                <form v-on:submit.prevent="updateArticle">
+                                    <div class="card-body">
+                                        <img src="" alt="Image Post">
+                                        <div class="input-group mb-3">
+                                            <div class="row">
+                                                <div class="input-field col-sm">
+                                                    <label for="title">Title Post: </label>
+                                                    <input v-model="formEdit.title" placeholder="title post" type="text" class="validate">
+                                                    <label for="subtitle">Sub-title: </label>
+                                                    <input v-model="formEdit.subtitle" placeholder="sub-title post" type="text" class="validate">
+                                                </div>
+                                            </div>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">Post Description</span>
+                                                </div>
+                                            </div>
+                                            <textarea v-model="formEdit.description" class="form-control" aria-label="With textarea"></textarea>
+                                        </div>
+                                        <div class="input-group mb-3" >
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">Upload</span>
+                                                </div>
+                                                <input v-model="formEdit.image" type="text" placeholder="url address sementara . ." >
+                                                <div class="custom-file">
+                                                    <input type="file" class="custom-file-input" aria-describedby="inputGroupFile">
+                                                    <label class="custom-file-label" for="inputGroup">Choose file</label>
+                                                </div>
+                                            </div>
+                                        <div class="card-footer">
+                                            <button type="submit" class="btn btn-light">Publish</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <hr>
                         </div>
-                        <hr>
                         <!-- Menu Setings -->
                         <div id="menuSetings" class="col-sm">
-                            <medium>Menu Settings</medium>
+                            <h2>Menu Settings</h2>
+                            <hr>
                         </div>
-                        <hr>
                         <!-- Profile -->
                         <div id="profile" class="col-sm">
-                            <medium>Profile</medium>
+                            <h2>Profile</h2>
                             <div class="card text-center">
                                 <div class="card-header">
                                     <p>User's name</p>
@@ -151,11 +209,11 @@
                                 </div>
                                 <div class="card-footer">Since 2019</div>
                             </div>
+                            <hr>
                         </div>
-                        <hr>
                         <!-- Deleted Post -->
                         <div id="deletedPost" class="col-sm">
-                            <medium>Deleted Post</medium>
+                            <h2>Deleted Post</h2>
                             <div class="col-sm">
                                 <div class="row">
                                     <div class="card border-danger col-sm-4" >
@@ -180,11 +238,11 @@
                                     </div>
                                 </div>
                             </div>
+                            <hr>
                         </div>
-                        <hr>
                         <!-- Login -->
                         <div id="formLogin" class="col-sm">
-                            <medium>Form Login</medium>
+                            <h2>Form Login</h2>
                             <div class="card text-center">
                                 <div class="card-header">
                                     <p>Form Login</p>
@@ -194,12 +252,12 @@
                                         <div class="form-group">
                                             <img src="https://img.icons8.com/bubbles/50/000000/gmail.png">
                                             <label for="email">Email address</label>
-                                            <input type="email" class="form-control" id="email" placeholder="email@example.com">
+                                            <input type="email" class="form-control" placeholder="email@example.com">
                                         </div>
                                         <div class="form-group">
                                             <img src="https://img.icons8.com/bubbles/50/000000/lock-2.png">
                                             <label for="password">Password</label>
-                                            <input type="password" class="form-control" id="password" placeholder="Password">
+                                            <input type="password" class="form-control" placeholder="Password">
                                         </div>
                                         <button type="submit" class="btn btn-primary">Sign in</button>
                                         <button type="submit" class="btn btn-warning">Register</button>
@@ -207,11 +265,11 @@
                                 </div>
                                 <div class="card-footer">Since 2019</div>
                             </div>
+                            <hr>
                         </div>
-                        <hr>
                         <!-- Register -->
                         <div id="formRegister" class="formRegister col-sm">
-                            <medium>Form Register</medium>
+                            <h2>Form Register</h2>
                             <div class="card text-center">
                                 <div class="card-header">
                                     <p>Form Register</p>
@@ -220,18 +278,18 @@
                                     <form class="p-4">
                                         <div class="form-group">
                                             <img src="https://img.icons8.com/bubbles/50/000000/groups.png">
-                                            <label for="email">Username: </label>
+                                            <label for="username">Username: </label>
                                             <input type="text" class="form-control" id="Username" placeholder="username . . ">
                                         </div>
                                         <div class="form-group">
                                             <img src="https://img.icons8.com/bubbles/50/000000/gmail.png">
                                             <label for="email">Email: </label>
-                                            <input type="email" class="form-control" id="email" placeholder="user@example.com">
+                                            <input type="email" class="form-control" placeholder="user@example.com">
                                         </div>
                                         <div class="form-group">
                                             <img src="https://img.icons8.com/bubbles/50/000000/lock-2.png">
                                             <label for="password">Password: </label>
-                                            <input type="password" class="form-control" id="password" placeholder="Password">
+                                            <input type="password" class="form-control" placeholder="Password">
                                         </div>
                                         <button type="submit" class="btn btn-warning">Register</button>
                                         <button type="submit" class="btn btn-primary">Sign in</button>
@@ -247,10 +305,15 @@
         <footer>
             <div class="card-footer">&copy; mini wp by indinabilah</div>
         </footer>
-    
+    </div>
+        <!-- CDN Vue Axios-->
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script src="./js/vue.js"></script>
         <script src="./js/main.js"></script>
     </body>
 </html>
