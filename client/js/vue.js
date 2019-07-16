@@ -12,6 +12,7 @@ new Vue({
                 image:'',
             },
             formEdit: {
+                id: '',
                 title:'',
                 subtitle:'',
                 description:'',
@@ -87,20 +88,37 @@ new Vue({
                 .then(({data})=>{
                     const getData = data.data
                     console.log(data, 'ini ibu budi lg update')
+                    this.formEdit.id = getData._id
+                    console.log(getData._id, 'apanih')
                     this.formEdit.title = getData.title
-                    // this.formEdit.
+                    this.formEdit.subtitle = getData.subtitle
+                    this.formEdit.description = getData.description
+                    this.formEdit.image = getData.image
                 })
                 .catch(err => {
                     console.log(err)
                 })
             },
             updateArticle(value){
+                console.log(value, 'disini katanya objectID')
                 axios({
                     method: 'PATCH',
                     url: `http://localhost:3000/articles/${value}`,
+                    data: {
+                        title: this.formEdit.title,
+                        subtitle: this.formEdit.subtitle,
+                        description: this.formEdit.description,
+                        image: this.formEdit.image,
+                    }
                 })
                 .then(({data})=>{
-                    this.answer2 = 'data updated !!!'
+                    this.answer2 = `${this.formEdit.title} data updated !!!`
+                    this.formEdit.id = ''
+                    this.formEdit.title = ''
+                    this.formEdit.subtitle = ''
+                    this.formEdit.description = ''
+                    this.formEdit.image = ''
+                    this.getAllArticle()
                 })
                 .catch(err => {
                     console.log(err)

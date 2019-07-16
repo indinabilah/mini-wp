@@ -48,8 +48,10 @@ class ArticleController{
         .catch(next)
     }
     static edit(req, res, next){
+        const id = req.params.id
         const upData = req.body
-        Article.findByIdAndUpdate(req.params.id, upData, {new: true})
+        console.log(upData, 'masuk sini ngga?')
+        Article.findByIdAndUpdate(id, upData, {new: true})
         .then(response => {
             res.status(200).json(response)
         })

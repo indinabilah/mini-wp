@@ -117,9 +117,9 @@
                                             <div class="row">
                                                 <div class="input-field col-sm">
                                                     <label for="title">Title Post: </label>
-                                                    <input v-model="formAdd.title" placeholder="title post" type="text" class="validate">
+                                                    <input v-model="formAdd.title" placeholder="title post" type="text" >
                                                     <label for="subtitle">Sub-title: </label>
-                                                    <input v-model="formAdd.subtitle" placeholder="sub-title post" type="text" class="validate">
+                                                    <input v-model="formAdd.subtitle" placeholder="sub-title post" type="text" >
                                                 </div>
                                             </div>
                                             <div class="input-group">
@@ -153,16 +153,16 @@
                                 <div class="card-header">
                                     <p>Form Edit Articles</p>
                                 </div>
-                                <form v-on:submit.prevent="updateArticle">
+                                <form >
                                     <div class="card-body">
                                         <img src="" alt="Image Post">
                                         <div class="input-group mb-3">
                                             <div class="row">
                                                 <div class="input-field col-sm">
                                                     <label for="title">Title Post: </label>
-                                                    <input v-model="formEdit.title" placeholder="title post" type="text" class="validate">
+                                                    <input v-model="formEdit.title" placeholder="title post" type="text" value="" >
                                                     <label for="subtitle">Sub-title: </label>
-                                                    <input v-model="formEdit.subtitle" placeholder="sub-title post" type="text" class="validate">
+                                                    <input v-model="formEdit.subtitle" placeholder="sub-title post" type="text" value="" >
                                                 </div>
                                             </div>
                                             <div class="input-group">
@@ -183,7 +183,7 @@
                                                 </div>
                                             </div>
                                         <div class="card-footer">
-                                            <button type="submit" class="btn btn-light">Publish</button>
+                                            <button v-on:click="updateArticle(formEdit.id)" type="submit" class="btn btn-light">Publish</button>
                                         </div>
                                     </div>
                                 </form>
