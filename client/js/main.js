@@ -1,0 +1,12 @@
+$(document).ready(function() {
+    $('#dashboard').show()
+    $('#searchTitle').show()
+    $('#listArticle').show()
+    $('#postArticle').show()
+    $('#profile').show()
+    $('#formAdd').show()
+    $('#formLogin').show()
+    $('#formRegister').show()
+    $('#menuSetings').hide()
+    $('#deletedPost').hide()
+})

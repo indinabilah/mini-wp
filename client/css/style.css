@@ -1,0 +1,95 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-color: rgb(238, 241, 245);
+    text-decoration: none;
+    text-decoration-color: none;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    -moz-text-decoration-color: white;
+    -webkit-text-stroke-color: black
+}
+header {
+    margin-top: 0px ;
+    background-color: rgb(86, 148, 177);
+    position: absolute;
+    position: fixed;
+    width:100%;
+    z-index:5;
+}
+nav{
+    margin: 0;
+    padding: 20px 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    background-color: rgb(86, 148, 177);
+    align-items: center;
+    height: auto;
+}
+nav div .p-2{
+    text-decoration-line: overline;
+}
+a {
+    text-decoration-color: none;
+    -webkit-text-fill-color: rgb(86, 148, 177);
+}
+button {
+    -webkit-text-fill-color: rgb(86, 148, 177);
+}
+nav ul{
+    justify-content: row;
+    text-decoration: none;
+    list-style: none;
+}
+nav li{
+    margin-right: 30px;
+}
+main{
+    position: relative;
+    top: 90px;
+    bottom: 90px;
+}
+#sidebar {
+    position: fixed;
+    min-height: 100vh;
+    margin-left: -15rem;
+    -webkit-transition: margin .25s ease-out;
+    -moz-transition: margin .25s ease-out;
+    -o-transition: margin .25s ease-out;
+    transition: margin .25s ease-out;
+}
+
+
+#sidebar .list-group {
+    width: 15rem;
+}
+  
+@media (min-width: 768px) {
+    #sidebar {
+        margin-left: 0;
+    }
+}
+.card-header{
+    background-color: rgb(86, 148, 177);
+    color: #fff;
+}
+.card-footer{
+    color: rgb(86, 148, 177);;
+}
+footer {
+    background-color: #fff;
+    color: #fff;
+    padding: 5px 0;
+    position: fixed;
+    width: 100%;
+    z-index: 5;
+    bottom: 0;
+}
+
+footer p {
+    font-family: 'Philosopher', sans-serif;
+    font-size: 11px;
+    text-align: center;
+}
