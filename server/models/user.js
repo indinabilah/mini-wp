@@ -6,7 +6,6 @@ const userSchema = new Schema({
     username:{
         type: String, 
         required:[true, 'Please input your username'],
-        // garagara ini email google gamau masuk!
         validate: {
             validator: function(value) {
                 return mongoose.model('User', userSchema)

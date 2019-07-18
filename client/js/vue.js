@@ -51,6 +51,7 @@ new Vue({
                 })
                 .then(({data})=>{
                     this.articles.push(data)
+                    Swal.fire('Success Add Article',`${this.formAdd.title}`, 'success')
                     this.formAdd.title = ''
                     this.formAdd.subtitle = ''
                     this.formAdd.description = ''
@@ -59,6 +60,7 @@ new Vue({
                 })
                 .catch(err => {
                     console.log(err)
+                    Swal.fire('Failed to Add Article',`${err}`, 'error')
                 })
             },
             getAllArticle(){
@@ -102,6 +104,7 @@ new Vue({
                     url: `http://localhost:3000/articles/${value}`,
                 })
                 .then(({data})=>{
+                    this.page = 'formEdit'
                     const getData = data.data
                     console.log(data, 'ini ibu budi lg update')
                     this.formEdit.id = getData._id
@@ -129,6 +132,7 @@ new Vue({
                 })
                 .then(({data})=>{
                     this.answer2 = `${this.formEdit.title} data updated !!!`
+                    Swal.fire('Success Update Article !',`${this.formEdit.title}`, 'success')
                     this.formEdit.id = ''
                     this.formEdit.title = ''
                     this.formEdit.subtitle = ''
@@ -138,6 +142,7 @@ new Vue({
                 })
                 .catch(err => {
                     console.log(err)
+                    Swal.fire('Failed to Update Article !',`invalid input`, 'error')                    
                 })
             },
             deleteArticle(value){
@@ -148,10 +153,12 @@ new Vue({
                 })
                 .then(({data})=>{
                     this.answer2 = 'data delted !!!'
+                    Swal.fire('Success Delete Article !',`...`, 'success')
                     this.getAllArticle()
                 })
                 .catch(err => {
                     console.log(err)
+                    Swal.fire('Failed to Delete Article !',`...`, 'error')
                 })
             },
             login(){
@@ -167,6 +174,7 @@ new Vue({
                     console.log('masuk login')
                     console.log(data)
                     localStorage.setItem('token', data.jwt) // nempelin jwt
+                    Swal.fire('Success Login !',`${data.data.name}`, 'success')
                     this.formLogin.id = data.data.id
                     this.formLogin.username = data.data.name
                     this.formLogin.email = ''
@@ -175,11 +183,13 @@ new Vue({
                 })
                 .catch(err => {
                     console.log(err)
+                    Swal.fire('Failed Login !',`username/password invalid`, 'error')                    
                 })
             },
             logout(value){
                 console.log(`username ${this.formLogin.username} dengan id (${this.formLogin.id}) telah logout`)
                 localStorage.clear()
+                Swal.fire('Success Logout !',`${this.formLogin.username}`, 'success')
                 this.formLogin.username = ''
                 this.formLogin.id = ''
                 this.page = 'login'
@@ -197,6 +207,7 @@ new Vue({
                 })
                 .then(({data})=>{
                     console.log('bisa masuk register ngga?')
+                    Swal.fire('Success Register !',`${this.formRegister.username}`, 'success')
                     this.formRegister.username = ''
                     this.formRegister.email = ''
                     this.formRegister.password = ''
@@ -204,6 +215,7 @@ new Vue({
                 })
                 .catch(err => {
                     console.log(err)
+                    Swal.fire('Failed to Register !',`invalid input`, 'warning')                    
                 })
             },
             changeDescription(){
@@ -222,6 +234,9 @@ new Vue({
             }
         },
         created() {
+            if(localStorage.token){
+                this.page = 'dashboard'
+            }
             this.getAllArticle()
         },
         mounted() {
