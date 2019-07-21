@@ -5,13 +5,13 @@ const {OAuth2Client} = require('google-auth-library')
 
 class UserController{
     static create(req, res, next){
-        console.log('masuk controller error ngga?')
-        console.log(req.body)
+        // console.log('masuk controller error ngga?')
+        // console.log(req.body)
         const {username, email, password} = req.body
         const newData = {username, email, password}
         User.create(newData)
         .then(response => {
-            console.log('atau udh masuk sini?')
+            // console.log('atau udh masuk sini?')
             res.status(200).json({
                 message: 'success create !!', 
                 data: response

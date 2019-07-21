@@ -31,7 +31,7 @@ new Vue({
                 email:'',
                 password:''
             },
-            page: 'login',
+            page: 'articlesHome',
             preview: {}
         },
         methods:{
@@ -236,6 +236,8 @@ new Vue({
         created() {
             if(localStorage.token){
                 this.page = 'dashboard'
+            }else{
+                this.page = 'articlesHome'
             }
             this.getAllArticle()
         },

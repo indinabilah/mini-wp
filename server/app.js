@@ -4,7 +4,7 @@ const app = express()
 const moongose = require('mongoose')
 const cors = require('cors')
 const port = process.env.PORT || 4000
-// const errHandler = require('./middlewares/error-handlers')
+const errHandler = require('./middlewares/error-handlers')
 const routes = require('./routes/index')
 
 // db moongose
@@ -22,7 +22,7 @@ app.use(cors())
 app.use('/', routes)
 
 //error handler
-// app.use(errHandler)
+app.use(errHandler)
 
 app.use("/", (req, res)=>{
     res.status(200).json({

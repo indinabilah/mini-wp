@@ -1,12 +1,4 @@
-$(document).ready(function() {
-    $('#dashboard').show()
-    $('#searchTitle').show()
-    $('#listArticle').show()
-    $('#postArticle').show()
-    $('#profile').show()
-    $('#formAdd').show()
-    $('#formLogin').show()
-    $('#formRegister').show()
-    $('#menuSetings').hide()
-    $('#deletedPost').hide()
-})
+import Vue from 'vue';
+import App from './App.vue';
+
+new Vue(App).$mount('#app');

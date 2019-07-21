@@ -6,18 +6,18 @@ const userSchema = new Schema({
     username:{
         type: String, 
         required:[true, 'Please input your username'],
-        validate: {
-            validator: function(value) {
-                return mongoose.model('User', userSchema)
-                .findOne({ username: value })
-                .then(data => { 
-                    if (data) return false 
-                })
-                .catch(err => {
-                    return err
-                })
-            }, msg: 'username is available !'
-        }
+        // validate: {
+        //     validator: function(value) {
+        //         return mongoose.model('User', userSchema)
+        //         .findOne({ username: value })
+        //         .then(data => { 
+        //             if (data) return false 
+        //         })
+        //         .catch(err => {
+        //             return err
+        //         })
+        //     }, msg: 'username is available !'
+        // }
     },
     email:{
         type: String,
@@ -49,7 +49,7 @@ const userSchema = new Schema({
 }, {timestamps: true});
 
 userSchema.pre('save', function(next) {
-    console.log(this)
+    // console.log(this)
     this.password = hashPassword(this.password)
     next()
 })

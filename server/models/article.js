@@ -18,9 +18,10 @@ const articleSchema = new Schema({
         type: String,
         required: [true, 'Image can not be empty, use the address image (temporary)']
     },
-    // UserId: {
-    //     type: {type: Schema.Types.ObjectId, ref: 'User' }
-    // }
+    UserId: {
+        type: Schema.Types.ObjectId, 
+        ref: 'User'
+    }
 }, {timestamps: true})
 
 const Article = moongose.model('Article', articleSchema)

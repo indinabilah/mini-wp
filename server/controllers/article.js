@@ -2,17 +2,30 @@ const {Article} = require('../models/index')
 
 class ArticleController{
     static create(req, res, next){
-        const {title, subtitle, description, image} = req.body
+        console.log(req.body)
+        const {title, subtitle, description, image, UserId} = req.body
         // const UserId = req.decoded.id  belom masih article an
-        const newData = {title, subtitle, description, image}
+        const newData = {title, subtitle, description, image, UserId}
         Article.create(newData)
         .then(response => {
+            console.log(response, 'csl res di article userid')
             res.status(201).json({
                 message: 'success create!',
                 data: response
             })
         })
         .catch(next)
+    }
+    static articleByUser(req,res,next) {
+        console.log('yeeay update')
+        Article.find({userId: req.decoded.id})
+            .then(response => {
+                res.status(201).json({
+                    message: 'success get all article by user!',
+                    data: response
+                })
+            })
+          .catch(next)
     }
     static findAll(req, res, next){
         Article.find()
@@ -42,7 +55,7 @@ class ArticleController{
             console.log(response)
             res.status(200).json({
                 message: 'deleted',
-                data: response
+                data: req.params.id
             })
         })
         .catch(next)
@@ -58,6 +71,7 @@ class ArticleController{
         .catch(next)
     }
 }
+
 
 
 module.exports = ArticleController
