@@ -10,7 +10,7 @@
                     </div>
                     <div class="card-user text-left img-right" style="margin: 20px;">
                         <h5 class="card-title text-center">{{article.title}}</h5>
-                        <img src="" alt="Image Article's">
+                        <img :src="article.image" alt="Image Article's" style="width: 500px;">
                         <h3 class="card-text">{{article.subtitle}}</h3>
                         <p class="card-text">{{article.description}}</p>
                     </div>
@@ -35,7 +35,7 @@
                             </div>
                             <div class="card-user text-left img-right" style="margin: 20px;">
                                 <h5 class="card-title text-center">{{article.title}}</h5>
-                                <img src="" alt="Image Article's">
+                                <img :src="article.image" alt="Image Article's" style="width: 100px;">
                                 <h3 class="card-text">{{article.subtitle}}</h3>
                                 <p class="card-text">{{article.description}}</p>
                             </div>
@@ -59,7 +59,7 @@
                             </div>
                             <div class="card-user text-left img-right" style="margin: 20px;">
                                 <h5 class="card-title text-center">{{prevdata.title}}</h5>
-                                <img src="" alt="Image Article's">
+                                <img :src="prevdata.image" alt="Image Article's" style="width: 500px;">
                                 <h3 class="card-text">{{prevdata.subtitle}}</h3>
                                 <p class="card-text">{{prevdata.description}}</p>
                             </div>

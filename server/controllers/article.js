@@ -3,9 +3,9 @@ const {Article} = require('../models/index')
 class ArticleController{
     static create(req, res, next){
         console.log(req.body)
-        const {title, subtitle, description, image, UserId} = req.body
+        const {title, subtitle, description, UserId} = req.body
         // const UserId = req.decoded.id  belom masih article an
-        const newData = {title, subtitle, description, image, UserId}
+        const newData = {title, subtitle, description, image : req.file.cloudStoragePublicUrl, UserId}
         Article.create(newData)
         .then(response => {
             console.log(response, 'csl res di article userid')

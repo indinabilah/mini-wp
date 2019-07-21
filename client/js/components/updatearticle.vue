@@ -14,8 +14,9 @@
                             <p><b>Title Post :</b></p>
                             <h5 class="card-title">{{article.title}}</h5>
                             <p><b>Image :</b></p>
-                            <p>{{article.image}}</p>
-                            <img src="" alt="Image Post" sizes="" srcset="">
+                            <img :src="article.image" alt="" style="width: 300px"/>
+                            <!-- <p>{{article.image}}</p> -->
+                            <!-- <img src="" alt="Image Post" sizes="" srcset=""> -->
                             <p><b>Subtitle :</b></p>
                             <p class="card-text">{{article.subtitle}}</p>
                             <p><b>Description :</b></p>

@@ -17,17 +17,13 @@
                                 <input v-model="subtitle" placeholder="sub-title post" type="text" >
                             </div>
                         </div>
-                        <!-- <p>
-                            <wysiwyg v-model="myHTML" />
-                        </p> -->
                         <div class="input-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text">Post Description</span>
                             </div>
                         </div>
-                        <textarea v-model="description" class="form-control" aria-label="With textarea"></textarea>
-                        <!-- <div id="froala-editor">
-                        </div> -->
+                        <wysiwyg v-model="description"></wysiwyg>
+                        <!-- <textarea v-model="description" class="form-control" aria-label="With textarea"></textarea>  -->
                     </div>
                     <div class="input-group mb-3" >
                             <div class="input-group-prepend">
@@ -35,7 +31,7 @@
                             </div>
                             <input v-model="imageurl" type="text" placeholder="url address sementara . ." >
                             <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="inputGroupFile01"
+                                <input type="file" class="custom-file-input" v-on:change="uploadimage" id="inputGroupFile01"
                                 aria-describedby="inputGroupFile">
                                 <label class="custom-file-label" for="inputGroup">Choose file</label>
                             </div>
@@ -77,6 +73,7 @@
 </template>
 
 <script>
+import vueWysiwyg from '../../js/vueWysiwyg.js'
 export default {
     props: ['author'],
     data(){
@@ -88,7 +85,13 @@ export default {
             description:''
         }
     },
+    components: {
+        wysiwyg: vueWysiwyg.component
+    },
     methods:{
+        uploadimage(e){
+            this.imageurl = e.target.files[0]
+        },
         prev(){
             this.preview = 'fill'
         },
@@ -97,16 +100,17 @@ export default {
         },
         createarticle(){
             console.log(this.author.id, 'masuk createarticle')
+            let data = new FormData()
+            data.append("title", this.title)
+            data.append("subtitle", this.subtitle)
+            data.append("image", this.imageurl)
+            data.append("description", this.description)
+            data.append("UserId", this.author.id)
+
             axios({
                 method: "POST",
                 url: "http://localhost:3000/articles",
-                data:{
-                    title: this.title,
-                    subtitle: this.subtitle,
-                    image: this.imageurl,
-                    description: this.description,
-                    UserId: this.author.id
-                },
+                data: data,
                 headers:{
                     token: localStorage.token
                 }

@@ -70,50 +70,54 @@ class UserController{
         .catch(next)
     }
     static loginGoogle(req, res, next){
-        let userPayload
-        const { id_token } = req.body
-        console.log(id_token, ' -> ada id gasi -_-')
-        const client = new OAuth2Client(process.env.GOOGLE_ACCESS_ID)
-        client.verifyIdToken({
-            idToken: id_token,
-            audience: process.env.GOOGLE_ACCESS_ID
+        User.findOne({
+            email:  req.body.email
         })
-        .then(ticket => {
-            console.log('dari sini kayaknya')
-            const payload = ticket.getPayload()
-            return Promise.all([payload, User.findOne({
-                email:  payload.email
-            })])
-        })
-        .then(([payload, user]) => {
-            console.log('masuk error disini')
-            if (user) {
-                return Promise.all([payload, user])
+        .then((data) => {
+            if (data) {
+                if(comparePassword(data.password, req.body.password)){
+                    const forJwt = {
+                        id: data._id,
+                        email: data.email,
+                        username: data.username
+                    }
+                    const token = getToken(forJwt)
+                    res.status(200).json({
+                        message: 'Valid',
+                        data: {
+                            id: data._id,
+                            name: data.username,
+                            email: data.email
+                        },
+                        jwt: token
+                    })
+                }else{
+                    next({
+                        status: 400,
+                        message: 'Username/Password Invalid'
+                    })
+                }
             } else {
-                return Promise.all([payload, User.create({
-                    username: payload.name,
-                    email: payload.email,
-                    password: 'indihaha'
-                })])
+                return User.create({
+                    username: req.body.name,
+                    email: req.body.email,
+                    password: req.body.password
+                })
             }
         })
-        .then(([payload]) => {
-            console.log(payload, 'masuk sini dulu')
-            userPayload = payload
-            return User.findOne({email: payload.email})
-        })
-        .then(userFind => {
+        .then((data) => {
             const forJwt = {
-                id: userFind._id,
-                email: userFind.email,
-                username: userFind.username
+                id: data._id,
+                email: data.email,
+                username: data.username
             }
             const token = getToken(forJwt)
             res.status(200).json({
                 message: 'Valid',
                 data: {
-                    name: userFind.username,
-                    email: userFind.email
+                    id: data._id,
+                    name: data.username,
+                    email: data.email
                 },
                 jwt: token
             })

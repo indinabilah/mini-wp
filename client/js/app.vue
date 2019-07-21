@@ -38,8 +38,8 @@
           </div>
           <div class="col-sm-6">
               <dashboardlive v-if="page == 'dashboard-page'" v-bind:keysearch="search"></dashboardlive>
-              <addarticle v-if="page == 'add-page'" @created="goingto" v-bind:author="datalogin"></addarticle>
-              <userarticles v-if="page == 'myarticles-page'" v-bind:keysearch="search" :userid="datalogin.id" @update="toupdate"></userarticles>
+              <addarticle v-show="page == 'add-page'" @created="goingto" v-bind:author="datalogin"></addarticle>
+              <userarticles v-if="page == 'myarticles-page'" v-bind:keysearch="search" :userid="datalogin.id" @update="toupdate" @edit="goingto"></userarticles>
               <updatearticle v-if="page == 'update-page'" v-bind:updateid="updateid" @goingto="goingto"></updatearticle>
               <profilepage v-if="page == 'profile-page'" :userlogin="datalogin"></profilepage>
               <deletedpostpage v-if="page == 'deletedpost-page'" v-bind:keysearch="search"></deletedpostpage>
@@ -83,15 +83,19 @@ export default {
       deletedpostpage, foot,
   },
   methods:{
-    toupdate(val){
-      console.log(val,'masuk')
-      this.page = val.pageinto
-      this.updateid = val.id
-      this.datalogin = val.data
+    toupdate(value){
+      console.log(value.data,'masuk heeheh')
+      this.page = value.pageinto
+      this.updateid = value.id
+      if(value.data){
+        this.datalogin = value.data
+      }
     },
     goingto(value){
       this.page = value
-      this.updateid = value.id
+      if(value.id){
+        this.updateid = value.id
+      }
     },
     searchInput(value){
       this.search = value

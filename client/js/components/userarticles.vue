@@ -48,7 +48,7 @@ export default {
             })
             .then(({data}) => {
                 Swal.fire('Yeaayy', 'Article deleted', 'success')
-                this.getAllArticle()
+                this.$emit('edit', 'myarticle-page')
             })
             .catch(err => {
                 console.log(err)
