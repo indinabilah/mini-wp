@@ -6,18 +6,6 @@ const userSchema = new Schema({
     username:{
         type: String, 
         required:[true, 'Please input your username'],
-        // validate: {
-        //     validator: function(value) {
-        //         return mongoose.model('User', userSchema)
-        //         .findOne({ username: value })
-        //         .then(data => { 
-        //             if (data) return false 
-        //         })
-        //         .catch(err => {
-        //             return err
-        //         })
-        //     }, msg: 'username is available !'
-        // }
     },
     email:{
         type: String,

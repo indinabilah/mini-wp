@@ -38,7 +38,6 @@ export default {
     },
     methods:{
         deletearticle(id){
-            Swal.fire('😂', 'belom ya ampun', 'success')
             axios({
                 method: "DELETE",
                 url: `http://localhost:3000/articles/${id}`,
