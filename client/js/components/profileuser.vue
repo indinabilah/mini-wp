@@ -11,7 +11,7 @@
                 </div>
                 <div v-if="page == 'edit'" class="col-sm 5">
                     <p>edit nih</p>
-                    <img :src="image" alt="image user">
+                    <img :src="userlogin.image" alt="image user">
                     <h4>username : {{username}}</h4>
                     <input v-model="username" type="text">
                     <h4>email    : {{email}}</h4>

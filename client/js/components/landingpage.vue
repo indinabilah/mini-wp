@@ -1,7 +1,7 @@
 <template>
     <main>
         <div v-if="pageinto !== 'fill'" class="container" style="padding-top: 50px;">
-            <h1 style="text-align: center; color: rgb(86, 148, 177);"> 🐼 Wellcome xixixi . . . 🐼</h1>
+            <h1 style="text-align: center; color: rgb(86, 148, 177);"> 🐼 mini wp nya indi . . . 🐼</h1>
             <hr>
             <div v-for="article in allArticle" :key="article._id">
                 <div class="card text-center" >
@@ -12,7 +12,7 @@
                         <h5 class="card-title text-center">{{article.title}}</h5>
                         <img :src="article.image" alt="Image Article's" style="width: 500px;">
                         <h3 class="card-text">{{article.subtitle}}</h3>
-                        <p class="card-text">{{article.description}}</p>
+                        <p class="card-text" v-html="article.description"></p>
                     </div>
                     <div class="card-footer bg-transparent border-info">
                         <a href="#" class="download">download </a>
@@ -37,7 +37,7 @@
                                 <h5 class="card-title text-center">{{article.title}}</h5>
                                 <img :src="article.image" alt="Image Article's" style="width: 100px;">
                                 <h3 class="card-text">{{article.subtitle}}</h3>
-                                <p class="card-text">{{article.description}}</p>
+                                <p class="card-text" v-html="article.description"></p>
                             </div>
                             <div class="card-footer bg-transparent border-info">
                                 <a href="#" class="delete"><i class="tiny material-icons">clear</i> </a>
@@ -61,7 +61,7 @@
                                 <h5 class="card-title text-center">{{prevdata.title}}</h5>
                                 <img :src="prevdata.image" alt="Image Article's" style="width: 500px;">
                                 <h3 class="card-text">{{prevdata.subtitle}}</h3>
-                                <p class="card-text">{{prevdata.description}}</p>
+                                <p class="card-text" v-html="prevdata.description"></p>
                             </div>
                             <div class="card-footer bg-transparent border-info">
                                 <p>hai you read an article</p>

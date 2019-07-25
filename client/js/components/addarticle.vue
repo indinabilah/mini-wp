@@ -56,11 +56,11 @@
                         <h5 class="card-title">{{this.title}}</h5>
                         <p><b>Image :</b></p>
                         <p>{{this.imageurl}}</p>
-                        <img src="" alt="Image Post" sizes="" srcset="">
+                        <img :src="imageurl.name" alt="Image Post" sizes="" srcset="">
                         <p><b>Subtitle :</b></p>
                         <p class="card-text">{{this.subtitle}}</p>
                         <p><b>Description :</b></p>
-                        <p style="white-space: pre-line;">{{this.description}}</p>
+                        <p style="white-space: pre-line;" v-html="this.description"></p>
                     </div>
                     <div class="card-footer">
                         <a href="#" @click="ok" style="text-decoration: none;">OK !</a>

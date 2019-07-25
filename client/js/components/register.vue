@@ -26,6 +26,8 @@
                             </div>
                             <button @click="register" type="button" class="btn btn-warning">Register</button>
                             <button @click="login" type="button" class="btn btn-primary">Sign in</button>
+                            <button @click="go" type="button" class="btn btn-light">Home</button>
+
                         </form>
                     </div>
                     <div class="card-footer">
@@ -67,7 +69,7 @@ export default {
             })
             .catch(err => {
                 console.log(err.response)
-                Swal.fire('Error', err.response.data.error, 'error')
+                Swal.fire('Error 😭', err.response.data.error, 'error')
             })
         },
         login(){

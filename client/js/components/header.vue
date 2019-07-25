@@ -32,7 +32,7 @@ export default {
             if(localStorage.token){
                 this.$emit('go', 'dashboard-page')
             }else{
-                Swal.fire('Login dulu kuy!')
+                Swal.fire('silahkan login dahulu 😊')
                 this.$emit('login', 'login-page')
             }
         },

@@ -20,7 +20,7 @@
                             <p><b>Subtitle :</b></p>
                             <p class="card-text">{{article.subtitle}}</p>
                             <p><b>Description :</b></p>
-                            <p style="white-space: pre-line;">{{article.description}}</p>
+                            <p style="white-space: pre-line;" v-html="article.description"></p>
                         </div>
                         <div class="card-footer">
                             <p>Preview Article</p>
@@ -36,7 +36,7 @@
                 </div>
                 <form method="post">
                     <div class="card-body">
-                        <img src="" alt="Image Post">
+                        <img :src="article.image" alt="Image Post">
                         <div class="input-group mb-3">
                             <div class="row">
                                 <div class="input-field col-sm">
@@ -54,7 +54,8 @@
                                     <span class="input-group-text">Post Description</span>
                                 </div>
                             </div>
-                            <textarea class="form-control" aria-label="With textarea" v-model="article.description"></textarea>
+                            <wysiwyg v-model="article.description"></wysiwyg>
+                            <!-- <textarea class="form-control" aria-label="With textarea" v-model="article.description"></textarea> -->
                             <!-- <div id="froala-editor">
                             </div> -->
                         </div>
@@ -81,6 +82,7 @@
 </template>
 
 <script>
+import vueWysiwyg from '../../js/vueWysiwyg.js'
 export default {
     props: ['updateid'],
     data(){
@@ -88,6 +90,9 @@ export default {
             article: {
             }
         }
+    },
+    components: {
+        wysiwyg: vueWysiwyg.component
     },
     methods:{
         updatearticle(){

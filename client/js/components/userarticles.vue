@@ -8,9 +8,9 @@
                 </div>
                 <div class="card-user text-left img-right" style="margin: 20px;">
                     <h5 class="card-title text-center">{{article.title}}</h5>
-                    <img src="" alt="Image Article's">
+                    <img :src="article.image" alt="Image Article's">
                     <h3 class="card-text">{{article.subtitle}}</h3>
-                    <p class="card-text">{{article.description}}</p>
+                    <p style="white-space: pre-line;" v-html="article.description"></p>
                 </div>
                 <div class="card-footer bg-transparent border-info">
                     <button @click="updatearticle(article._id)" type="button">edit</button>
@@ -46,7 +46,7 @@ export default {
                 }
             })
             .then(({data}) => {
-                Swal.fire('Yeaayy', 'Article deleted', 'success')
+                Swal.fire('Article Deleted ', '😭😭😭', 'success')
                 this.$emit('edit', 'myarticle-page')
             })
             .catch(err => {

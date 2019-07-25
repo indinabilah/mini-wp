@@ -23,6 +23,7 @@
                                 <button @click="login" type="button" class="btn btn-light">Sign in</button>
                                 <img @click="go" src="../../css/img/login.gif"  alt="login-gif">
                                 <button @click="register" type="button" class="btn btn-warning">Register</button>
+                                <button @click="go" type="button" class="btn btn-light">Home</button>
                             </div>
                         </div>
                         <div class="card-footer" style="padding-left: 100px">
@@ -74,7 +75,7 @@ export default {
             })
             .then(({ data }) => {
                 localStorage.setItem('token', data.jwt)
-                Swal.fire('yeaayy', 'masuk google', 'success')
+                Swal.fire('Login berhasil 😊', 'login google ::', 'success')
                 this.$emit('login', {
                     pageinto: 'dashboard-page',
                     data: {
@@ -109,7 +110,7 @@ export default {
                 console.log('berhasil login')
                 this.datalogin.id = data.data.id
                 this.datalogin.username = data.data.name
-                Swal.fire('HAHAHAHA', 'hmmmm', 'success')
+                Swal.fire('Berhasil Login 😊', `welcome ${data.data.name}` , 'success')
                 this.$emit('login', {
                     pageinto: 'dashboard-page',
                     data: {
@@ -120,7 +121,7 @@ export default {
             })
             .catch(err => {
                 console.log(err.response)
-                Swal.fire('Error', err.response.data.error, 'error')
+                Swal.fire('Error 😭', err.response.data.error, 'error')
             })
         },
         register(){

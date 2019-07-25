@@ -27,7 +27,7 @@ export default {
             this.$emit('myarticlespage', 'myarticles-page')
         },
         deletedpost(){
-            Swal.fire('😂', 'maaf ya belom', 'success')
+            Swal.fire('😭', 'maaf ya belom', 'success')
             this.$emit('deletedpostpage', 'deletedpost-page')
         }
     }

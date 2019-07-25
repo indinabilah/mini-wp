@@ -9,9 +9,9 @@
                     </div>
                     <div class="card-user text-left img-right" style="margin: 20px;">
                         <h5 class="card-title text-center">{{article.title}}</h5>
-                        <img src="" alt="Image Article's">
+                        <img :src="article.image" alt="Image Article's">
                         <h3 class="card-text">{{article.subtitle}}</h3>
-                        <p class="card-text">{{article.description}}</p>
+                        <p class="card-text" v-html="article.description"></p>
                     </div>
                     <div class="card-footer bg-transparent border-info">
                         <button @click="prev(article._id)" class="btn btn-outline-btn-primary">preview</button>
@@ -36,7 +36,7 @@
                                 <h5 class="card-title text-center">{{article.title}}</h5>
                                 <img src="" alt="Image Article's">
                                 <h3 class="card-text">{{article.subtitle}}</h3>
-                                <p class="card-text">{{article.description}}</p>
+                                <p style="white-space: pre-line;" v-html="article.description"></p>
                             </div>
                             <div class="card-footer bg-transparent border-info">
                                 <a href="#" class="delete"><i class="tiny material-icons">clear</i> </a>
@@ -59,7 +59,7 @@
                             <div class="card-user justify-content-center" style="margin: 20px;">
                                 <img :src="prevdata.image" alt="Image Article's" style="width: 100px">
                                 <h3 class="card-text">{{prevdata.subtitle}}</h3>
-                                <p class="card-text">{{prevdata.description}}</p>
+                                <p style="white-space: pre-line;" v-html="prevdata.description"></p>
                             </div>
                             <div class="card-footer bg-transparent border-info">
                                 <p>hai you read an article</p>
@@ -126,7 +126,7 @@ export default {
             this.search = this.keysearch
             axios({
                 method: 'GET',
-                url: 'http://localhost:3000/articles',
+                url: 'https://34.87.99.171/articles',
                 headers:{
                     token: localStorage.token
                 }
