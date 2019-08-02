@@ -109,7 +109,7 @@ export default {
 
             axios({
                 method: "POST",
-                url: "http://localhost:3000/articles",
+                url: "http://34.87.99.171/articles",
                 data: data,
                 headers:{
                     token: localStorage.token

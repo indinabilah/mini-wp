@@ -119,7 +119,7 @@ export default {
             this.$emit('registerpage', 'register-page')
         },
         getAllArticle() {
-           axios.get('http://localhost:3000/articles')
+           axios.get('http://34.87.99.171/articles')
             .then(({data}) => {
                 this.allArticle = data.data
             })
@@ -132,7 +132,7 @@ export default {
             this.search = this.keysearch
             axios({
                 method: 'GET',
-                url: 'http://localhost:3000/articles',
+                url: 'http://34.87.99.171/articles',
             })
             .then(({data})=>{
                 console.log(data.data,this.keysearch, 'search')

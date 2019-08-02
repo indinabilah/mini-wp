@@ -111,7 +111,7 @@ export default {
         console.log('dash')
            axios({
                method: 'GET',
-               url: 'http://localhost:3000/articles'
+               url: 'http://34.87.99.171/articles'
            })
             .then(({data}) => {
                 console.log(data, '=====')

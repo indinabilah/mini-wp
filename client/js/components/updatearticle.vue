@@ -99,7 +99,7 @@ export default {
             console.log(this.article, 'asd')
             axios({
                 method: 'PATCH',
-                url: `http://localhost:3000/articles/${this.article._id}`,
+                url: `http://34.87.99.171/articles/${this.article._id}`,
                 data: this.article,
                 headers: {
                     token: localStorage.token
@@ -117,7 +117,7 @@ export default {
     created(){
         axios({
             method: 'GET',
-            url: `http://localhost:3000/articles/up/${this.updateid}`,
+            url: `http://34.87.99.171/articles/up/${this.updateid}`,
             headers: {
                 token: localStorage.token
             }

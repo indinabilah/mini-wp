@@ -40,7 +40,7 @@ export default {
         deletearticle(id){
             axios({
                 method: "DELETE",
-                url: `http://localhost:3000/articles/${id}`,
+                url: `http://34.87.99.171/articles/${id}`,
                 headers: {
                     token: localStorage.token
                 }
@@ -63,7 +63,7 @@ export default {
         getAllArticle() {
             axios({
                 method: "GET",
-                url: 'http://localhost:3000/articles',
+                url: 'http://34.87.99.171/articles',
                 headers: {
                     token: localStorage.token
                 }
@@ -88,7 +88,7 @@ export default {
             this.search = this.keysearch
             axios({
                 method: 'GET',
-                url: 'http://localhost:3000/articles',
+                url: 'http://34.87.99.171/articles',
                 headers:{
                     token: localStorage.token
                 }

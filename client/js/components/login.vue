@@ -65,7 +65,7 @@ export default {
         console.log(profile, 'masuk google')
             axios({
                 method: "POST",
-                url: "http://localhost:3000/users/login/google",
+                url: "http://34.87.99.171/users/login/google",
                 data: {
                     name: profile.ofa,
                     email: profile.U3,
@@ -98,7 +98,7 @@ export default {
         login(){
             axios({
                 method: "POST",
-                url: "http://localhost:3000/users/login",
+                url: "http://34.87.99.171/users/login",
                 data: {
                     email: this.datalogin.email,
                     password: this.datalogin.password
