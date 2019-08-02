@@ -1,5 +1,7 @@
 # mini-wp 🐼
 
+[![standard-readme compliant](https://img.shields.io/badge/Link%20deploy-KANBAN-brightgreen.svg?style=flat-square)](https://miniwp.indinabilah.me)
+
 
 ### List of basic routes
 
